@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FetchInterview</string>
+    <string name="device_not_connected_to_internet">Device Not Connected to Internet</string>
 </resources>

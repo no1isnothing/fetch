@@ -43,9 +43,9 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.recyclerview)
     ksp(libs.hilt.android.compiler)
+    ksp(libs.room.compiler)
+    annotationProcessor(libs.room.compiler)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.core.ktx)
@@ -64,6 +64,10 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.okhttp)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.room.runtime)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

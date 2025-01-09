@@ -1,3 +1,7 @@
 package com.example.fetchinterview.data
 
-class ViewItemName(val item: NameItem) : ViewItemBase(ViewType.NAME)
+
+/**
+ * Data class for holding [NameItem] for [RecyclerView]
+ */
+data class ViewItemName(val item: NameItem) : ViewItemBase(ViewType.NAME)

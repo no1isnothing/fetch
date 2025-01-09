@@ -13,6 +13,7 @@ import com.example.fetchinterview.data.ConnectionState
 import com.example.fetchinterview.data.NameItem
 import com.example.fetchinterview.data.ViewItemBase
 import com.example.fetchinterview.databinding.FragmentNameListBinding
+import com.google.common.flogger.FluentLogger
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -25,11 +26,6 @@ class NameListFragment : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
     private val nameItems = arrayListOf<ViewItemBase>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,22 +35,23 @@ class NameListFragment : Fragment() {
         mainViewModel.refreshNames()
         val nameList = binding.nameList
         with(nameList) {
-            layoutManager = LinearLayoutManager(context) // change to staggered grid for category
+            layoutManager = LinearLayoutManager(context)
             adapter = NameAdapter(nameItems)
         }
         mainViewModel.connectionStateData.observe(viewLifecycleOwner) {
             when (it) {
                 ConnectionState.ERROR -> binding.connectionStatus.visibility = VISIBLE
-                ConnectionState.INIT, ConnectionState.SUCCESS -> binding.connectionStatus.visibility =
+                ConnectionState.SUCCESS -> binding.connectionStatus.visibility =
                     GONE
             }
-            binding.swiperefresh.isRefreshing = false
         }
 
         mainViewModel.getNames().observe(viewLifecycleOwner) { names ->
             nameItems.clear()
+            binding.swiperefresh.isRefreshing = false
 
             nameItems.addAll(names)
+            logger.atWarning().log(nameItems.toString())
             binding.nameList.adapter?.notifyDataSetChanged()
         }
 
@@ -66,6 +63,6 @@ class NameListFragment : Fragment() {
     }
 
     companion object {
-
+        private val logger: FluentLogger = FluentLogger.forEnclosingClass()
     }
 }

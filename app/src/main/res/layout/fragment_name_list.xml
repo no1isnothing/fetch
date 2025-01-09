@@ -12,7 +12,7 @@
         android:id="@+id/connectionStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Device Not Connected to Internet"
+        android:text="@string/device_not_connected_to_internet"
         android:visibility="gone"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nameList"

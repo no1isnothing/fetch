@@ -8,6 +8,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.fetchinterview.R
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * MainActivity for the project.
+ *
+ * It doesn't do anything besides a bit of setup and hold [NameListFragment].
+ */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

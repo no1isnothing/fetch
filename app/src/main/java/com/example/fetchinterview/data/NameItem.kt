@@ -1,5 +1,7 @@
 package com.example.fetchinterview.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
 /**
@@ -8,4 +10,5 @@ import kotlinx.serialization.Serializable
  * Used to parse incoming data.
  */
 @Serializable
-data class NameItem(val id: Int, val name: String?, val listId: Int)
+@Entity
+data class NameItem(@PrimaryKey val id: Int, val name: String?, val listId: Int)

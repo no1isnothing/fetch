@@ -12,6 +12,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * MainViewModel for the project.
+ *
+ * Handles connection between [MainRepository] and [Fragment]s
+ */
 @HiltViewModel
 class MainViewModel @Inject constructor(private val mainRepository: MainRepository) : ViewModel() {
     val connectionStateData = mainRepository.connectionStateFlow.asLiveData()
